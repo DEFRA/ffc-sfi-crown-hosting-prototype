@@ -7,4 +7,6 @@ services:
       target: production
     image: ffc-sfi-crown-hosting-prototype
     container_name: ffc-sfi-crown-hosting-prototype
-    environment: {}
+    environment: 
+      APPINSIGHTS_CLOUDROLE: ffc-sfi-crown-hosting-prototype
+      APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
