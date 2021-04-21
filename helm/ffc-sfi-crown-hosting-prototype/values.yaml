@@ -1,0 +1,60 @@
+environment: development
+name: ffc-sfi-crown-hosting-prototype
+namespace: ffc-sfi
+workstream: ffc-sfi
+image: ffc-sfi-crown-hosting-prototype
+
+labels:
+  component: web
+
+appInsights:
+  key:
+
+containerConfigMap:
+  name: ffc-sfi-crown-hosting-prototype-config-map
+
+containerSecret:
+  name: ffc-sfi-crown-hosting-prototype-container-secret
+  type: Opaque
+
+service:
+  port: 80
+  type: ClusterIP
+
+deployment:
+  restartPolicy: Always
+  priorityClassName: default
+  replicas: 1
+  minReadySeconds: 0
+  redeployOnChange: update this field to force a change
+  runAsNonRoot: true
+  runAsUser: 1000
+
+container:
+  imagePullPolicy: IfNotPresent
+  requestMemory: 5Mi
+  requestCpu: 5m
+  limitMemory: 40Mi
+  limitCpu: 40m
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  port: 3000
+
+ingress:
+  class: nginx
+  endpoint: ffc-sfi-crown-hosting-prototype
+  server: example.com
+
+livenessProbe:
+  path: /healthz
+  port: 3000
+  initialDelaySeconds: 35
+  periodSeconds: 10
+  failureThreshold: 5
+
+readinessProbe:
+  path: /healthy
+  port: 3000
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  failureThreshold: 5

@@ -1,0 +1,33 @@
+{% extends 'layout.njk' %}
+{% set mainClasses = "govuk-main-wrapper--l" %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+{% block content %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "/"
+}) }}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukPanel({
+        titleText: "Test complete"
+      }) }}
+
+      <h2 class="govuk-heading-m">Url response</h2>
+      {% if result.error %}
+        <p class="govuk-body">{{ result.error }}</p>
+      {% else %}
+        <h3 class="govuk-heading-s">Headers</h3>
+        <pre>{{ result.headers }}</pre>
+        <h3 class="govuk-heading-s">Payload</h3>
+        <pre>
+          <p class="govuk-body">{{ result.payload }}</p>
+        </pre>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

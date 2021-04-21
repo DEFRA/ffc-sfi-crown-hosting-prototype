@@ -1,9 +1,9 @@
 apiVersion: v2
-description: description-of-project-goes-here
-name: ffc-template-node
+description: Connectivity test between AKS and Crown Hosting
+name: ffc-sfi-crown-hosting-prototype
 # this version is automatically updated in the build pipline
 version: 1.0.0
 dependencies:
 - name: ffc-helm-library
-  version: ^2.5.2
+  version: ^2.8.0
   repository: https://raw.githubusercontent.com/defra/ffc-helm-repository/master/
