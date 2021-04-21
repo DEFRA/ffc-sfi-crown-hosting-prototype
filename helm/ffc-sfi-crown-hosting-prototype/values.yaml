@@ -4,10 +4,19 @@ namespace: ffc-sfi
 workstream: ffc-sfi
 image: ffc-sfi-crown-hosting-prototype
 
-labels: {}
+labels:
+  component: web
 
 containerConfigMap:
   name: ffc-sfi-crown-hosting-prototype-config-map
+
+containerSecret:
+  name: ffc-sfi-crown-hosting-prototype-container-secret
+  type: Opaque
+
+service:
+  port: 80
+  type: ClusterIP
 
 deployment:
   restartPolicy: Always
@@ -20,13 +29,18 @@ deployment:
 
 container:
   imagePullPolicy: IfNotPresent
-  requestMemory: 120Mi
-  requestCpu: 120m
-  limitMemory: 120Mi
-  limitCpu: 120m
+  requestMemory: 5Mi
+  requestCpu: 5m
+  limitMemory: 20Mi
+  limitCpu: 20m
   readOnlyRootFilesystem: true
   allowPrivilegeEscalation: false
   port: 3000
+
+ingress:
+  class: nginx
+  endpoint: ffc-sfi-crown-hosting-prototype
+  server: example.com
 
 livenessProbe:
   path: /healthz
