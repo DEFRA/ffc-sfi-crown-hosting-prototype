@@ -7,6 +7,9 @@ image: ffc-sfi-crown-hosting-prototype
 labels:
   component: web
 
+appInsights:
+  key:
+
 containerConfigMap:
   name: ffc-sfi-crown-hosting-prototype-config-map
 
