@@ -5,21 +5,37 @@ async function request (query) {
 }
 
 async function get (url, token) {
-  const response = await wreck.get(url, getConfiguration(token))
-  return {
-    headers: response.res.headers,
-    payload: response.payload
+  try {
+    const response = await wreck.get(url, getConfiguration(token))
+    return {
+      headers: response.res.headers,
+      payload: response.payload
+    }
+  } catch (error) {
+    return {
+      headers: {},
+      payload: {},
+      error
+    }
   }
 }
 
 async function post (url, data, token) {
-  const response = await wreck.post(url, {
-    payload: data,
-    ...getConfiguration(token)
-  })
-  return {
-    headers: response.res.headers,
-    payload: response.payload
+  try {
+    const response = await wreck.post(url, {
+      payload: data,
+      ...getConfiguration(token)
+    })
+    return {
+      headers: response.res.headers,
+      payload: response.payload
+    }
+  } catch (error) {
+    return {
+      headers: {},
+      payload: {},
+      error: error.message
+    }
   }
 }
 

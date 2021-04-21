@@ -9,7 +9,7 @@
   text: "Back",
   href: "/"
 }) }}
-<div class="govuk-width-container" style="overflow-y: auto;">
+<div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       {{ govukPanel({
@@ -17,12 +17,16 @@
       }) }}
 
       <h2 class="govuk-heading-m">Url response</h2>
-      <h3 class="govuk-heading-s">Headers</h3>
-      <pre>{{headers}}</pre>
-      <h3 class="govuk-heading-s">Payload</h3>
-      <pre>
-        <p class="govuk-body">{{payload}}</p>
-      </pre>
+      {% if error %}
+        <p class="govuk-body">{{error}}</p>
+      {% else %}
+        <h3 class="govuk-heading-s">Headers</h3>
+        <pre>{{headers}}</pre>
+        <h3 class="govuk-heading-s">Payload</h3>
+        <pre>
+          <p class="govuk-body">{{payload}}</p>
+        </pre>
+      {% endif %}
     </div>
   </div>
 </div>

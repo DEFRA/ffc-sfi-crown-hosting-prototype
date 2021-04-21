@@ -12,8 +12,12 @@ module.exports = [{
       }
     },
     handler: async (request, h) => {
-      const { headers, payload } = await api.request(request.query)
-      return h.view('result', { headers: JSON.stringify(headers, undefined, 2), payload: JSON.stringify(payload, undefined, 2) })
+      const { headers, payload, error } = await api.request(request.query)
+      return h.view('result', {
+        headers: JSON.stringify(headers, undefined, 2),
+        payload: JSON.stringify(payload, undefined, 2),
+        error
+      })
     }
   }
 }]
