@@ -1,0 +1,6 @@
+version: '3.8'
+
+services:
+  ffc-sfi-crown-hosting-prototype:
+    command: >
+      sh -c "npm run test:watch"
