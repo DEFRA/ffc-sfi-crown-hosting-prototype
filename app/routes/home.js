@@ -1,6 +1,7 @@
 const ViewModel = require('./models/url')
 const schema = require('./schemas/url')
 const { cookieOptions } = require('../config')
+const buildQueryString = require('../utils/build-query-string')
 
 module.exports = [{
   method: 'GET',
@@ -8,7 +9,7 @@ module.exports = [{
   options: {
     handler: (request, h) => {
       const values = request.state.ffc_sfi_chp || {}
-      return h.view('home', new ViewModel(values.url))
+      return h.view('home', new ViewModel(values))
     }
   }
 },
@@ -19,11 +20,12 @@ module.exports = [{
     validate: {
       payload: schema,
       failAction: async (request, h, error) => {
-        return h.view('home', new ViewModel(request.payload.url, error)).code(400).takeover()
+        return h.view('home', new ViewModel(request.payload, error)).code(400).takeover()
       }
     },
     handler: async (request, h) => {
-      return h.redirect(`/result?url=${request.payload.url}`).state('ffc_sfi_chp', request.payload, cookieOptions)
+      const queryString = buildQueryString(request.payload)
+      return h.redirect(`/result?${queryString}`).state('ffc_sfi_chp', request.payload, cookieOptions)
     }
   }
 }]

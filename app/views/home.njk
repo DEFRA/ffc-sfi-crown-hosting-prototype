@@ -1,13 +1,15 @@
 {% extends 'layout.njk' %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="/" method="post" novalidate>
       <input type="hidden" name="crumb" value="{{crumb}}"/>
-      {{ govukInput(model) }}
+      {{ govukInput(model.url) }}
+      {{ govukRadios(model.method) }}
       {{ govukButton({
         text: "Continue"
       }) }}
