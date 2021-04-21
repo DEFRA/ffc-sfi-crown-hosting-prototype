@@ -2,6 +2,7 @@ const ViewModel = require('./models/url')
 const schema = require('./schemas/url')
 const { cookieOptions } = require('../config')
 const buildQueryString = require('../utils/build-query-string')
+const api = require('../api')
 
 module.exports = [{
   method: 'GET',
@@ -24,7 +25,8 @@ module.exports = [{
       }
     },
     handler: async (request, h) => {
-      const queryString = buildQueryString(request.payload)
+      const response = await api.request(request.payload)
+      const queryString = buildQueryString(response)
       return h.redirect(`/result?${queryString}`).state('ffc_sfi_chp', request.payload, cookieOptions)
     }
   }

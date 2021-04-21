@@ -8,14 +8,12 @@ async function get (url, token) {
   try {
     const response = await wreck.get(url, getConfiguration(token))
     return {
-      headers: response.res.headers,
-      payload: response.payload
+      headers: responseItemToString(response.res.headers),
+      payload: responseItemToString(response.payload)
     }
   } catch (error) {
     return {
-      headers: {},
-      payload: {},
-      error
+      error: error.message
     }
   }
 }
@@ -27,13 +25,11 @@ async function post (url, data, token) {
       ...getConfiguration(token)
     })
     return {
-      headers: response.res.headers,
-      payload: response.payload
+      headers: responseItemToString(response.res.headers),
+      payload: responseItemToString(response.payload)
     }
   } catch (error) {
     return {
-      headers: {},
-      payload: {},
       error: error.message
     }
   }
@@ -46,6 +42,10 @@ function getConfiguration (token) {
     },
     json: true
   }
+}
+
+function responseItemToString (item) {
+  return JSON.stringify(item, undefined, 2)
 }
 
 module.exports = {

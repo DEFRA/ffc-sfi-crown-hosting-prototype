@@ -32,7 +32,7 @@ describe('Url schema validation', () => {
   })
 
   test('is valid with data', () => {
-    const result = schema.validate({ url: 'http://mytest.com', data: 'myData' })
+    const result = schema.validate({ url: 'http://mytest.com', data: '{"my":"Data"}' })
     expect(result.error).toBeUndefined()
   })
 })

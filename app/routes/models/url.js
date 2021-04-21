@@ -1,3 +1,5 @@
+const isJson = require('../../utils/isJson')
+
 function ViewModel (value, error) {
   this.model = {}
   this.model.url = {
@@ -34,10 +36,32 @@ function ViewModel (value, error) {
     ]
   }
 
+  this.model.data = {
+    name: 'data',
+    id: 'data',
+    label: {
+      text: 'For post requests, provide any payload data'
+    },
+    hint: {
+      text: 'The data must be in Json format'
+    },
+    value: isJson(value.data) ? JSON.stringify(value.data) : value.data
+  }
+
+  this.model.token = {
+    label: {
+      text: 'If this Url requires a token, enter it here'
+    },
+    id: 'token',
+    name: 'token',
+    value: value.token
+  }
+
   if (error) {
-    this.model.url.errorMessage = {
-      text: error.message
-    }
+    this.model.error = [{
+      text: error.message,
+      href: '#'
+    }]
   }
 }
 

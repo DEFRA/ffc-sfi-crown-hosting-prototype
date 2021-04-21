@@ -1,23 +1,22 @@
-const schema = require('./schemas/url')
-const api = require('../api')
+
+const Joi = require('joi')
 
 module.exports = [{
   method: 'GET',
   path: '/result',
   options: {
     validate: {
-      query: schema,
+      query: Joi.object({
+        headers: Joi.string().allow(''),
+        payload: Joi.string().allow(''),
+        error: Joi.string().allow('')
+      }),
       failAction: async (request, h, error) => {
         return h.redirect('/url').takeover()
       }
     },
     handler: async (request, h) => {
-      const { headers, payload, error } = await api.request(request.query)
-      return h.view('result', {
-        headers: JSON.stringify(headers, undefined, 2),
-        payload: JSON.stringify(payload, undefined, 2),
-        error
-      })
+      return h.view('result', { result: request.query })
     }
   }
 }]
