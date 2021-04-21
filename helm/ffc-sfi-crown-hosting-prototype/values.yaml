@@ -35,7 +35,7 @@ container:
   requestMemory: 5Mi
   requestCpu: 5m
   limitMemory: 40Mi
-  limitCpu: 20m
+  limitCpu: 40m
   readOnlyRootFilesystem: true
   allowPrivilegeEscalation: false
   port: 3000
@@ -48,13 +48,13 @@ ingress:
 livenessProbe:
   path: /healthz
   port: 3000
-  initialDelaySeconds: 10
+  initialDelaySeconds: 35
   periodSeconds: 10
-  failureThreshold: 3
+  failureThreshold: 5
 
 readinessProbe:
   path: /healthy
   port: 3000
   initialDelaySeconds: 10
-  periodSeconds: 10
-  failureThreshold: 3
+  periodSeconds: 30
+  failureThreshold: 5
