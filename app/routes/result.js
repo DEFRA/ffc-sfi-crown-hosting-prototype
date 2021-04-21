@@ -12,8 +12,7 @@ module.exports = [{
       }
     },
     handler: async (request, h) => {
-      const query = JSON.parse(JSON.stringify(request.query))
-      const { headers, payload } = await api.request(query.method, query.url, request.data, request.token)
+      const { headers, payload } = await api.request(request.query)
       return h.view('result', { headers: JSON.stringify(headers, undefined, 2), payload: JSON.stringify(payload, undefined, 2) })
     }
   }

@@ -1,7 +1,7 @@
 const wreck = require('@hapi/wreck')
 
-async function request (method, url, data, token) {
-  return method === 'post' ? post(url, data, token) : get(url, token)
+async function request (query) {
+  return query.method === 'post' ? post(query.url, query.data, query.token) : get(query.url, query.token)
 }
 
 async function get (url, token) {
