@@ -3,7 +3,7 @@ const { responseItemToString } = require('./utils')
 const { hostname, keyRule, key } = require('../config').relay
 
 async function get (path) {
-  const promise = new Promise((resolve) => {
+  return new Promise((resolve) => {
     https.get({
       hostname: hostname,
       path: (!path || path.length === 0 || path[0] !== '/' ? '/' : '') + path,
@@ -40,7 +40,6 @@ async function get (path) {
       })
     })
   })
-  return await promise
 }
 
 module.exports = {
