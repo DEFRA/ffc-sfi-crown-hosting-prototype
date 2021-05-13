@@ -6,11 +6,6 @@ describe('Url schema validation', () => {
     expect(result.error).toBeUndefined()
   })
 
-  test('is invalid for invalid Url only', () => {
-    const result = schema.validate({ url: 'mytest.com' })
-    expect(result.error).toBeDefined()
-  })
-
   test('is valid for Url and get', () => {
     const result = schema.validate({ url: 'http://mytest.com', method: 'get' })
     expect(result.error).toBeUndefined()
