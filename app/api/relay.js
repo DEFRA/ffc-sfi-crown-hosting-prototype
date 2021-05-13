@@ -16,7 +16,7 @@ async function get (path) {
         console.error(`Request Failed. Status Code: ${res.statusCode}`)
         res.resume()
         resolve({
-          error: `Request Failed. Status Code: ${res.statusCode}`
+          error: `Request Failed. Status Code: ${res.statusCode}, Message: ${res.statusMessage}`
         })
       } else {
         let data

@@ -29,7 +29,7 @@ deployment:
   redeployOnChange: update this field to force a change
 
 container:
-  imagePullPolicy: IfNotPresent
+  imagePullPolicy: Always
   requestMemory: 5Mi
   requestCpu: 5m
   limitMemory: 40Mi
