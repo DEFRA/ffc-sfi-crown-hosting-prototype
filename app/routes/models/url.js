@@ -8,9 +8,6 @@ function ViewModel (value, error) {
       isPageHeading: true,
       classes: 'govuk-label--l'
     },
-    hint: {
-      text: 'For a relay, provide the path '
-    },
     id: 'url',
     name: 'url',
     value: value.url
@@ -81,6 +78,36 @@ function ViewModel (value, error) {
     id: 'token',
     name: 'token',
     value: value.token
+  }
+
+  this.model.relayNamespace = {
+    label: {
+      text: 'If the Relay requires authentication, enter the namespace'
+    },
+    hint: {
+      text: 'The namespace must be in the format <namespace>.servicebus.windows.net'
+    },
+    id: 'relayNamespace',
+    name: 'relayNamespace',
+    value: value.relayNamespace
+  }
+
+  this.model.relayKeyName = {
+    label: {
+      text: 'If the Relay requires authentication, enter the SAS key name'
+    },
+    id: 'relayKeyName',
+    name: 'relayKeyName',
+    value: value.relayKeyName
+  }
+
+  this.model.relayKey = {
+    label: {
+      text: 'If the Relay requires authentication, enter the SAS key'
+    },
+    id: 'relayKey',
+    name: 'relayKey',
+    value: value.relayKey
   }
 
   if (error) {

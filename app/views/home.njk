@@ -21,6 +21,9 @@
       {{ govukRadios(model.relay) }}
       {{ govukTextarea(model.data) }}
       {{ govukInput(model.token) }}
+      {{ govukInput(model.relayNamespace) }}
+      {{ govukInput(model.relayKeyName) }}
+      {{ govukInput(model.relayKey) }}
       {{ govukButton({
         text: "Continue"
       }) }}
