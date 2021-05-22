@@ -63,8 +63,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: false,
-      filename: '../views/layout.njk',
-      template: 'app/views/_layout.njk'
+      filename: '../views/_layout.njk',
+      template: 'app/views/_layout.template.njk'
     }),
     new MiniCssExtractPlugin({
       filename: 'css/application.[hash].css'
