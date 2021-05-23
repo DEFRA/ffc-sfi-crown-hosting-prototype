@@ -10,10 +10,5 @@ module.exports = {
     isHttpOnly: true,
     clearInvalid: false,
     strictHeader: true
-  },
-  relay: {
-    hostname: process.env.RELAY_NAMESPACE,
-    keyRule: process.env.RELAY_KEY_RULE,
-    key: process.env.RELAY_KEY
   }
 }
