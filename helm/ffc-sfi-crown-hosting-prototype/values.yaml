@@ -26,7 +26,6 @@ deployment:
   priorityClassName: default
   replicas: 1
   minReadySeconds: 0
-  redeployOnChange: update this field to force a change
 
 container:
   imagePullPolicy: Always
@@ -35,9 +34,6 @@ container:
   limitMemory: 40Mi
   limitCpu: 40m
   port: 3000
-  relayNamespace:
-  relayKeyRule:
-  relayKey:
 
 ingress:
   class: nginx
