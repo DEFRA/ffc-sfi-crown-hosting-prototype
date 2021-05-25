@@ -9,16 +9,14 @@ async function get (query) {
       token: WebSocket.createRelayToken(uri, query.relayKeyName, query.relayKey)
     },
     function (ws) {
-      ws.on('connection', function (ws) {
-        console.log('connection accepted')
-        ws.onmessage = function (event) {
-          const data = JSON.parse(event.data)
-          resolve({
-            headers: {},
-            payload: responseItemToString(data)
-          })
-        }
-      })
+      console.log('connection accepted')
+      ws.onmessage = function (event) {
+        const data = JSON.parse(event.data)
+        resolve({
+          headers: {},
+          payload: responseItemToString(data)
+        })
+      }
     })
     wss.on('error', function (err) {
       console.error(`Got error: ${err}`)

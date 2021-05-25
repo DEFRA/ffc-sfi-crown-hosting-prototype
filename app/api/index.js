@@ -1,5 +1,6 @@
 const { get, post } = require('./standard')
-const { get: getRelay } = require('./relay-http')
+const { get: getRelayHttp } = require('./relay-http')
+const { get: getRelaySocket } = require('./relay-socket')
 const { getRelayToken } = require('./utils')
 
 async function request (query) {
@@ -7,7 +8,7 @@ async function request (query) {
     query.token = getRelayToken(query.relayNamespace, query.relayKeyName, query.relayKey)
   }
   // if (query.relay) {
-  //   return getRelay(query)
+  //   return getRelaySocket(query)
   // }
   return query.method === 'post' ? post(query.url, query.data, query.token) : get(query.url, query.token)
 }
