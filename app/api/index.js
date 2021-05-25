@@ -1,4 +1,4 @@
-const { get, post } = require('./standard')
+const { get, post } = require('./http')
 const { get: getRelayHttp } = require('./relay-http')
 const { get: getRelaySocket } = require('./relay-socket')
 const { getRelayToken } = require('./utils')
