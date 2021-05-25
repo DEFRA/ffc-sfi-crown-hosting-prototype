@@ -27,7 +27,7 @@ module.exports = [{
     handler: async (request, h) => {
       const response = await api.request(request.payload)
       const queryString = buildQueryString(response)
-      return h.redirect(`/result?${queryString}`)// .state('ffc_sfi_chp', request.payload, cookieOptions)
+      return h.redirect(`/result?${queryString}`).state('ffc_sfi_chp', request.payload, cookieOptions)
     }
   }
 }]

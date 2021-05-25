@@ -6,7 +6,7 @@ async function get (url, token) {
     const response = await wreck.get(url, getConfiguration(token))
     return {
       headers: responseItemToString(response.res.headers),
-      payload: responseItemToString(response.payload)
+      payload: responseItemToString(JSON.parse(response.payload.toString()))
     }
   } catch (error) {
     return {
