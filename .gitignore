@@ -4,5 +4,6 @@ helm/**/*.lock
 *.tgz
 .vscode
 app/dist
+scripts/deploy
 # Generated
 _layout.njk

@@ -1,8 +1,15 @@
 const moment = require('moment')
 const crypto = require('crypto')
+const isJson = require('../utils/isJson')
 
 function responseItemToString (item) {
-  return JSON.stringify(item, undefined, 2)
+  if (isJson(item)) {
+    if (typeof item === 'string') {
+      item = JSON.parse(item)
+    }
+    return JSON.stringify(item, undefined, 2)
+  }
+  return item
 }
 
 function getRelayToken (relayNamespace, relayKeyName, relayKey) {
@@ -12,7 +19,7 @@ function getRelayToken (relayNamespace, relayKeyName, relayKey) {
   const hmac = crypto.createHmac('sha256', relayKey)
   hmac.update(toSign)
   const signature = hmac.digest('base64')
-  const token = 'SharedAccessSignature sr=' + encodeURIComponent(uri) + '&sig=' + encodeURIComponent(signature) + '&se=' + unixSeconds + '&skn=' + relayKeyName
+  const token = `SharedAccessSignature sr=${encodeURIComponent(uri)}&sig=${encodeURIComponent(signature)}&se=${unixSeconds}&skn=${relayKeyName}`
   return token
 }
 
