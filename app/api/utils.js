@@ -19,8 +19,7 @@ function getRelayToken (relayNamespace, relayKeyName, relayKey) {
   const hmac = crypto.createHmac('sha256', relayKey)
   hmac.update(toSign)
   const signature = hmac.digest('base64')
-  const token = `SharedAccessSignature sr=${encodeURIComponent(uri)}&sig=${encodeURIComponent(signature)}&se=${unixSeconds}&skn=${relayKeyName}`
-  return token
+  return `SharedAccessSignature sr=${encodeURIComponent(uri)}&sig=${encodeURIComponent(signature)}&se=${unixSeconds}&skn=${relayKeyName}`
 }
 
 module.exports = {

@@ -6,7 +6,7 @@ async function get (url, token) {
     const response = await wreck.get(url, getConfiguration(token))
     return {
       headers: responseItemToString(response.res.headers),
-      payload: responseItemToString(response.payload.toString())
+      payload: responseItemToString(response.payload)
     }
   } catch (error) {
     return {
@@ -23,7 +23,7 @@ async function post (url, data, token) {
     })
     return {
       headers: responseItemToString(response.res.headers),
-      payload: responseItemToString(response.payload.toString())
+      payload: responseItemToString(response.payload)
     }
   } catch (error) {
     return {
