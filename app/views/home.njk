@@ -1,4 +1,4 @@
-{% extends 'layout.njk' %}
+{% extends '_layout.njk' %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -18,8 +18,12 @@
       {% endif %}
       {{ govukInput(model.url) }}
       {{ govukRadios(model.method) }}
+      {{ govukRadios(model.relay) }}
       {{ govukTextarea(model.data) }}
       {{ govukInput(model.token) }}
+      {{ govukInput(model.relayNamespace) }}
+      {{ govukInput(model.relayKeyName) }}
+      {{ govukInput(model.relayKey) }}
       {{ govukButton({
         text: "Continue"
       }) }}
