@@ -7,8 +7,8 @@ async function request (query) {
   }
 
   const headers = {
-    api_id: query.api_id,
-    api_key: query.api_key
+    'api-id': query.api_id,
+    'api-key': query.api_key
   }
 
   return query.method === 'post'
