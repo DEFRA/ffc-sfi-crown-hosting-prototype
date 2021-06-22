@@ -18,13 +18,13 @@
 
       <h2 class="govuk-heading-m">Url response</h2>
       {% if result.error %}
-        <p class="govuk-body">{{ result.error | safe | dump }}</p>
+        <p class="govuk-body">{{ result.error }}</p>
       {% else %}
         <h3 class="govuk-heading-s">Headers</h3>
-        <pre>{{ result.headers | safe | dump }}</pre>
+        <pre>{{ result.headers }}</pre>
         <h3 class="govuk-heading-s">Payload</h3>
         <pre>
-          <p class="govuk-body">{{ result.payload | safe | dump }}</p>
+          <p class="govuk-body">{{ result.payload }}</p>
         </pre>
       {% endif %}
     </div>
