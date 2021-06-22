@@ -1,6 +1,6 @@
 {
   "name": "ffc-sfi-crown-hosting-prototype",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Connectivity test between AKS and Crown Hosting",
   "homepage": "https://github.com/DEFRA/ffc-sfi-crown-hosting-prototype",
   "main": "app/index.js",
