@@ -10,5 +10,7 @@ module.exports = {
     isHttpOnly: true,
     clearInvalid: false,
     strictHeader: true
-  }
+  },
+  chApiId: process.env.CH_API_ID,
+  chApiKey: process.env.CH_API_KEY
 }

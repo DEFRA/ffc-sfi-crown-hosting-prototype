@@ -1,5 +1,6 @@
 const { get, post } = require('./http')
 const { getRelayToken } = require('./utils')
+const { chApiId, chApiKey } = require('../config')
 
 async function request (query) {
   if (query.relay && query.relayKey) {
@@ -7,8 +8,8 @@ async function request (query) {
   }
 
   const headers = {
-    'api-id': query.api_id,
-    'api-key': query.api_key
+    'api-id': query.api_id || chApiId,
+    'api-key': query.api_key || chApiKey
   }
 
   return query.method === 'post'
