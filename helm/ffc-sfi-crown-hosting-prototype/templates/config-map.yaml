@@ -4,4 +4,6 @@ data:
   NODE_ENV: {{ quote .Values.environment }}
   PORT: {{ quote .Values.container.port }}
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
+  CH_API_ID: {{ quote .Values.container.chApiId }}
+  CH_API_KEY: {{ quote .Values.container.chApiKey }}
 {{- end -}}
