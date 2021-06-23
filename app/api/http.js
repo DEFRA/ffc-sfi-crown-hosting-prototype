@@ -1,9 +1,9 @@
 const wreck = require('@hapi/wreck')
 const { responseItemToString } = require('./utils')
 
-async function get (url, token) {
+async function get (url, token, headers) {
   try {
-    const response = await wreck.get(url, getConfiguration(token))
+    const response = await wreck.get(url, getConfiguration(token, headers))
     return {
       headers: responseItemToString(response.res.headers),
       payload: responseItemToString(response.payload)
@@ -15,12 +15,13 @@ async function get (url, token) {
   }
 }
 
-async function post (url, data, token) {
+async function post (url, data, token, headers) {
   try {
     const response = await wreck.post(url, {
       payload: data,
-      ...getConfiguration(token)
+      ...getConfiguration(token, headers)
     })
+
     return {
       headers: responseItemToString(response.res.headers),
       payload: responseItemToString(response.payload)
@@ -32,9 +33,10 @@ async function post (url, data, token) {
   }
 }
 
-function getConfiguration (token) {
+function getConfiguration (token, headers = {}) {
   return {
     headers: {
+      ...headers,
       Authorization: token || ''
     },
     json: true

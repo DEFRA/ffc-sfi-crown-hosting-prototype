@@ -8,7 +8,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/" method="post" novalidate>
+    <form action="/" method="post" novalidate autocomplete="off">
       <input type="hidden" name="crumb" value="{{crumb}}"/>
       {% if model.error %}
         {{ govukErrorSummary({
@@ -17,6 +17,8 @@
         }) }}
       {% endif %}
       {{ govukInput(model.url) }}
+      {{ govukInput(model.apiId) }}
+      {{ govukInput(model.apiKey) }}
       {{ govukRadios(model.method) }}
       {{ govukRadios(model.relay) }}
       {{ govukTextarea(model.data) }}
