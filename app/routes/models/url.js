@@ -13,6 +13,26 @@ function ViewModel (value, error) {
     value: value.url
   }
 
+  this.model.apiId = {
+    label: {
+      text: 'API Id'
+    },
+    classes: 'govuk-input--width-20',
+    id: 'api_id',
+    name: 'api_id',
+    value: value.apiId
+  }
+
+  this.model.apiKey = {
+    label: {
+      text: 'API Key'
+    },
+    classes: 'govuk-input--width-20',
+    id: 'api_key',
+    name: 'api_key',
+    value: value.apiKey
+  }
+
   this.model.method = {
     classes: 'govuk-radios--inline',
     idPrefix: 'method',
