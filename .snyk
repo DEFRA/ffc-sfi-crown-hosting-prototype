@@ -5,5 +5,5 @@ ignore:
   SNYK-JS-WS-1296835:
     - hyco-ws > ws:
         reason: None given
-        expires: '2021-07-14T15:50:17.598Z'
+        expires: '2021-10-14T15:50:17.598Z'
 patch: {}
