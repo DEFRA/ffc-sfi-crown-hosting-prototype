@@ -6,4 +6,8 @@ ignore:
     - hyco-ws > ws:
         reason: None given
         expires: '2021-10-14T15:50:17.598Z'
+  SNYK-JS-ANSIREGEX-1583908:
+    - blipp > easy-table > ansi-regex:
+        reason: No fix
+        expires: '2021-10-24T12:08:35.864Z'
 patch: {}
