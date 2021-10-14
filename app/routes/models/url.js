@@ -13,6 +13,16 @@ function ViewModel (value, error) {
     value: value.url
   }
 
+  this.model.callerId = {
+    label: {
+      text: 'Caller Id'
+    },
+    classes: 'govuk-input--width-20',
+    id: 'callerid',
+    name: 'callerid',
+    value: value.callerid
+  }
+
   this.model.apiId = {
     label: {
       text: 'API Id'
@@ -74,7 +84,7 @@ function ViewModel (value, error) {
       {
         value: false,
         text: 'No',
-        checked: value.relay === false
+        checked: value.relay === false || !value.relay
       }
     ]
   }

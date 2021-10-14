@@ -22,6 +22,7 @@ const custom = Joi.extend((joi) => {
 module.exports = Joi.object({
   url: Joi.string(),
   method: Joi.string().valid('get', 'post').default('get'),
+  callerid: Joi.string().allow(''),
   api_id: Joi.string().allow(''),
   api_key: Joi.string().allow(''),
   relay: Joi.boolean().default(true),

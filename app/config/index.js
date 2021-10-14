@@ -11,6 +11,7 @@ module.exports = {
     clearInvalid: false,
     strictHeader: true
   },
+  chApiGateway: process.env.CH_API_GATEWAY,
   chApiId: process.env.CH_API_ID,
   chApiKey: process.env.CH_API_KEY
 }

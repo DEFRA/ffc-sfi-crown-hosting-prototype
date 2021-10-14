@@ -34,6 +34,7 @@ container:
   limitMemory: 40Mi
   limitCpu: 40m
   port: 3000
+  chApiGateway:
   chApiId:
   chApiKey:
 

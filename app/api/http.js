@@ -39,6 +39,7 @@ function getConfiguration (token, headers = {}) {
       ...headers,
       Authorization: token || ''
     },
+    rejectUnauthorized: false,
     json: true
   }
 }
